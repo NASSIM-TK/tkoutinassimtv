@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الملاحظات</title>
+    <link rel="stylesheet" href="styles.css"> <!-- ربط ملف CSS -->
+    
+
+</head>
+<body>
+     <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script type="module" src="script.js"></script> <!-- ربط ملف JavaScript -->   
+    <div class="container">
+        <h1>تطبيق الملاحظات</h1>
+        <div class="buttons">
+            <button onclick="showForm()">إنشاء ملاحظة</button>
+            <button onclick="sortNotes('asc')">ترتيب من الأقدم إلى الأحدث</button>
+            <button onclick="sortNotes('desc')">ترتيب من الأحدث إلى الأقدم</button>
+            <button onclick="filterByDate()">تصفية حسب التاريخ</button>
+        </div>
+        <input type="text" id="searchInput" placeholder="بحث..." oninput="searchNotes()" class="search-input">
+        <div id="formContainer" class="form-container" style="display:none;">
+            <h2>إنشاء ملاحظة</h2>
+            <input type="text" id="phone" placeholder="رقم الهاتف" class="input-field">
+            <input type="text" id="paperNumber" placeholder="رقم الورقة" class="input-field">
+            <select id="letter" class="input-field">
+                <option value="L">L</option>
+                <option value="A">A</option>
+            </select>
+            <input type="number" id="cost" placeholder="سعر التكلفة" class="input-field">
+            <input type="number" id="totalCost" placeholder="السعر الإجمالي" class="input-field">
+            <input type="text" id="issue" placeholder="المشكلة" class="input-field">
+            <input type="text" id="date" placeholder="السنة والشهر (YYYY-MM)" class="input-field">
+            <button onclick="saveNote()" class="submit-btn">نشر</button>
+        </div>
+        <div id="notesContainer" class="notes-container">
+            <h2>الملاحظات</h2>
+            <!-- الملاحظات ستظهر هنا بشكل ديناميكي -->
+        </div>
+    </div>
+
+</body>
+</html>
